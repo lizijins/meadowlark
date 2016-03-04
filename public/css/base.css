@@ -1,0 +1,10 @@
+* {margin: 0;padding: 0;}
+body {background-color: #f3f3f3;}
+header {}
+header h2 {margin-top: 20px;text-align: center;}
+section {float: left;width: 20%;margin-left: 4%;margin-top: 4%;background-color: white;
+    -webkit-box-shadow: 3px 3px 3px #cccccc;
+    -moz-box-shadow: 3px 3px 3px #cccccc;
+    box-shadow: 3px 3px 3px #cccccc;}
+img {width: 100%;}
+span {display: block;}

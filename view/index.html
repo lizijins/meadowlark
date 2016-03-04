@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>动物画册</title>
+    <link href="css/base.css" rel="stylesheet" />
+    <script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
+    <script src="js/service.js"></script>
+    <script src="js/controller.js"></script>
+</head>
+<body>
+<header>
+    <h2>动物画册</h2>
+</header>
+<div ng-controller="ListAnimal">
+    <section ng-repeat="animal in animals">
+        <img ng-src="img/{{animal.url}}"/>
+        <span>{{animal.word}}</span>
+    </section>
+</div>
+<footer>
+</footer>
+</body>
+</html>
