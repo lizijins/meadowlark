@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>动物画册</title>
     <link href="css/base.css" rel="stylesheet" />
-    <script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
+    <script src="lib/angular.js"></script>
     <script src="js/service.js"></script>
     <script src="js/controller.js"></script>
 </head>
@@ -12,12 +12,7 @@
 <header>
     <h2>动物画册</h2>
 </header>
-<div ng-controller="ListAnimal">
-    <section ng-repeat="animal in animals">
-        <img ng-src="img/{{animal.url}}"/>
-        <span>{{animal.word}}</span>
-    </section>
-</div>
+<div ng-view></div>
 <footer>
 </footer>
 </body>
