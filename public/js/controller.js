@@ -1,4 +1,4 @@
-var myAppController = angular.module('myApp', ['Service']);
+var myAppController = angular.module('myApp', []);
 
 myAppController.config(['$routeProvider', function($routeProvider) {
     $routeProvider.
@@ -16,10 +16,18 @@ myAppController.config(['$routeProvider', function($routeProvider) {
         });
 }]);
 
-myAppController.controller('ListAnimal', function($scope, Animals) {
-    $scope.animals = Animals;
+myAppController.controller('ListAnimal', function($scope, $http) {
+    $http.get('api/animals',{}).success(function(data, status, headers, config) {
+        $scope.animals = data;
+    }).error(function(data, status, headers, config) {
+        console.log("error!");
+    });
 });
 
-myAppController.controller('DetailAnimal', function($scope, $routeParams, Animals) {
-    $scope.animal = Animals[$routeParams.id];
+myAppController.controller('DetailAnimal', function($scope, $http, $routeParams) {
+    $http.get('api/animals',{}).success(function(data, status, headers, config) {
+        $scope.animal = data[$routeParams.id];
+    }).error(function(data, status, headers, config) {
+        console.log("error!");
+    });
 });
