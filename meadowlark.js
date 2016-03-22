@@ -18,9 +18,13 @@ app.get('/', function(req, res) { //app.get是添加路由的方法
     res.sendfile('index.html');
 });
 
-app.get('api/animals', function(req, res) {
+app.get('/api/animals', function(req, res) {
     Animal.find(function(err, animals) {
-        res.json(animals);
+        if(animals.length) {
+            res.json(animals);
+        } else {
+            console.log('error!!!');
+        }
     });
 });
 
