@@ -1,5 +1,5 @@
 var myAppController = angular.module('myApp', []);
-var mydata;
+var animals;
 myAppController.config(['$routeProvider', function($routeProvider) {
     $routeProvider.
         when('/', {
@@ -17,14 +17,28 @@ myAppController.config(['$routeProvider', function($routeProvider) {
 }]);
 
 myAppController.controller('ListAnimal', function($scope, $http) {
-    $http.get('/api/animals').success(function(data, status, headers, config) {
-        $scope.animals = data;
-        mydata = data;
-    }).error(function(data, status, headers, config) {
-        console.log("error!");
-    });
+    if(animals) {
+        $scope.animals = animals;
+    } else {
+        $http.get('/api/animals').success(function(data, status, headers, config) {
+            $scope.animals = data;
+            animals = data;
+        }).error(function(data, status, headers, config) {
+            console.log("error!");
+        });
+    }
 });
 
-myAppController.controller('DetailAnimal', function($scope, $routeParams) {
-    $scope.animal = mydata[$routeParams.id];
+myAppController.controller('DetailAnimal', function($scope, $http, $routeParams) {
+    if(animals) {
+        $scope.animal = animals[$routeParams.id];
+    } else {
+        $http.get('/api/animals').success(function(data, status, headers, config) {
+            animals = data;
+            $scope.animal = animals[$routeParams.id];
+        }).error(function(data, status, headers, config) {
+            console.log("error!");
+        });
+    }
+
 });
