@@ -4,17 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
     <title>动物画册</title>
-    <link href="css/reset.css" rel="stylesheet" />
+    <!--<link href="css/reset.css" rel="stylesheet" />-->
     <link href="css/base.css" rel="stylesheet" />
     <script src="lib/angular.js"></script>
     <script src="js/controller.js"></script>
 </head>
 <body>
-<header>
-    <h1>Animal World</h1>
-</header>
-<div ng-view></div>
+<h1>Animal World</h1>
+<div class="btn-box" ng-controller="BgController">
+    <a id="icon-left" class="icon icon-left" ng-show="statue.showL" ng-click="turnLeft()"></a>
+    <a id="icon-right" class="icon icon-right" ng-show="statue.showR" ng-click="turnRight()"></a>
+</div>
+<div id="bg" class="bg" ng-view>
+</div>
 <footer>
 </footer>
 </body>
+<script>
+    var direction;
+    function BgController($scope) {
+        $scope.statue = {showL: false,showR: true};
+        $scope.turnRight = function() {
+            $scope.statue.showL = true;
+            $scope.statue.showR = false;
+            direction = true;
+            document.getElementById("bg").style.left = "-100%";
+        };
+        $scope.turnLeft = function() {
+            $scope.statue.showL = false;
+            $scope.statue.showR = true;
+            direction = false;
+            document.getElementById("bg").style.left = "0";
+        };
+    }
+    function ListController($scope) {
+        $scope.hideIcon = function() {
+            document.getElementById("icon-left").style.display = "none";
+            document.getElementById("icon-right").style.display = "none";
+        }
+    }
+    function DetailController($scope) {
+        if(direction) {
+            document.getElementById("detail").style.marginLeft = "55%";
+        } else {
+            document.getElementById("detail").style.marginLeft = "5%";
+        }
+        $scope.showIcon = function() {
+            if(direction) {
+                document.getElementById("icon-left").style.display = "block";
+            } else {
+                document.getElementById("icon-right").style.display = "block";
+            }
+        }
+    }
+</script>
 </html>

@@ -31,11 +31,11 @@ myAppController.controller('ListAnimal', function($scope, $http) {
 
 myAppController.controller('DetailAnimal', function($scope, $http, $routeParams) {
     if(animals) {
-        $scope.animal = animals[$routeParams.id];
+        $scope.animal = animals[parseInt($routeParams.id) - 1];
     } else {
         $http.get('/api/animals').success(function(data, status, headers, config) {
             animals = data;
-            $scope.animal = animals[$routeParams.id];
+            $scope.animal = animals[parseInt($routeParams.id) - 1];
         }).error(function(data, status, headers, config) {
             console.log("error!");
         });

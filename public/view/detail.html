@@ -1,6 +1,8 @@
-<section class="detail">
+<div id="detail" class="detail" ng-controller="DetailController">
     <img class="animated tada" ng-src="img/{{animal.url}}"/>
-    <h2>{{animal.word}}</h2>
-    <p>{{animal.introduce}}</p>
-    <a class="btn" href="#/">Back</a>
-</section>
+    <div class="detail-box">
+        <h2>{{animal.name}}</h2>
+        <p>{{animal.introduce}}</p>
+        <a ng-click="showIcon()" class="btn" href="#/">Back</a>
+    </div>
+</div>

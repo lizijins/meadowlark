@@ -1,3 +1,5 @@
-<section class="list" ng-repeat="animal in animals">
-    <a ng-href="#/detail/{{animal.id}}"><img class="animated myshake" ng-src="img/{{animal.url}}"/></a>
-</section>
+<div class="list" ng-repeat="animal in animals" ng-controller="ListController">
+    <a ng-href="#/detail/{{animal.id}}" ng-click="hideIcon()">
+        <img class="animated myshake" ng-src="img/{{animal.url}}"/>
+    </a>
+</div>
