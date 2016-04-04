@@ -6,7 +6,6 @@ myAppController.config(['$routeProvider', function($routeProvider) {
             controller:'ListAnimal',
             templateUrl: '/view/list.html'
         }).
-
         when('/detail/:id', {
             controller: 'DetailAnimal',
             templateUrl: '/view/detail.html'
