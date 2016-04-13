@@ -39,5 +39,4 @@ myAppController.controller('DetailAnimal', function($scope, $http, $routeParams)
             console.log("error!");
         });
     }
-
 });

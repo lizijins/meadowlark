@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var animalSchema = mongoose.Schema({
     id: Number,
     url: String,
-    word: String,
+    name: String,
     introduce: String
 });
 
